@@ -45,7 +45,7 @@ report1.to_csv('best_wines_by_continent.csv', index=False)
 
 # Reporte 2: Promedio de precio de vino y cantidad de reviews según país
 report2 = df.groupby('Country').agg({'Price': 'mean', 'Description': 'count'}).reset_index()
-report2.rename(columns={'description': 'Review Count'}, inplace=True)
+report2.rename(columns={'Description': 'Review Count'}, inplace=True)
 report2 = report2.sort_values(by='Price', ascending=False)
 report2.to_excel('average_price_reviews_by_country.xlsx', index=False)
 
@@ -63,7 +63,7 @@ db.wine_reports.insert_many(report4.to_dict('records'))
 print("Reportes generados y exportados correctamente.")
 
 def send_email(report_path):
-    from_address = 'w.pacheco@pucp.edu.pe'
+    from_address = 'juniordracildrago921@gmail.com'
     to_address = 'w.pacheco@pucp.edu.pe'
     subject = 'Reporte de Vinos'
     body = 'Adjunto se encuentra el reporte de vinos.'
@@ -84,7 +84,7 @@ def send_email(report_path):
 
     with smtplib.SMTP('smtp.gmail.com', 587) as server:
         server.starttls()
-        server.login(from_address, 'Champions16')  # Asegúrate de usar tu contraseña
+        server.login(from_address, 'Xivina13579246810')  # Asegúrate de usar tu contraseña
         server.send_message(msg)
 
     print("Correo enviado correctamente.")
